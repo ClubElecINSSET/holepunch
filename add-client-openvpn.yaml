@@ -1,0 +1,14 @@
+- name: Add OpenVPN client
+  hosts: clubelec_ovh_vm2
+  vars_prompt:
+    - name: client
+      prompt: Name of the OpenVPN client
+      private: false
+  tasks:
+   - name: Create an .ovpn file for the user
+     script: ./bash/add-client-openvpn.sh {{ client }}
+   - name: Retrive .ovpn file
+     fetch:
+       src: ./{{ client }}.ovpn
+       dest: ./{{ client }}.ovpn
+       flat: yes

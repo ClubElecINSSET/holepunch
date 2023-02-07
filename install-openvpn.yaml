@@ -1,0 +1,5 @@
+- name: Install OpenVPN
+  hosts: clubelec_ovh_vm2
+  tasks:
+   - name: Copy and execute bash script
+     script: ./bash/install-openvpn.sh

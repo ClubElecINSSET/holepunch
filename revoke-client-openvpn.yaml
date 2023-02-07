@@ -1,0 +1,9 @@
+- name: Revoke OpenVPN client
+  hosts: clubelec_ovh_vm2
+  vars_prompt:
+    - name: client
+      prompt: Name of the OpenVPN client to revoke
+      private: false
+  tasks:
+   - name: Revoke OpenVPN client
+     script: ./bash/revoke-client-openvpn.sh {{ client }}
