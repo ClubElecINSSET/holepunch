@@ -48,9 +48,8 @@ keepalive 10 120
 topology subnet
 server 10.8.0.0 255.255.255.0
 ifconfig-pool-persist ipp.txt" >>/etc/openvpn/server.conf
-sed -ne 's/^nameserver[[:space:]]\+\([^[:space:]]\+\).*$/\1/p' '/etc/resolv.conf' | while read -r line; do
-    echo "push \"dhcp-option DNS $line\"" >>/etc/openvpn/server.conf
-done
+echo 'push "dhcp-option DNS 80.67.169.40"' >>/etc/openvpn/server.conf
+echo 'push "dhcp-option DNS 80.67.169.12"' >>/etc/openvpn/server.conf
 echo "push \"redirect-gateway def1 bypass-dhcp\"
 dh none
 ecdh-curve prime256v1
